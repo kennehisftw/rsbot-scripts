@@ -7,6 +7,8 @@ import org.powerbot.script.rt6.Bank;
 import org.powerbot.script.rt6.GameObject;
 import org.powerbot.script.rt6.Item;
 
+import java.util.concurrent.Callable;
+
 public class BankWines extends Action {
 
     public BankWines(Context context) {
@@ -23,11 +25,17 @@ public class BankWines extends Action {
         if(!ctx.bank.opened()) {
             final GameObject banker = ctx.objects.select().name("Bank booth").nearest().poll();
             if (banker.valid()) {
-                ctx.interaction.object(banker, "Bank");
+                ctx.interaction.object(banker, "Bank", new Callable<Boolean>() {
+                    @Override
+                    public Boolean call() throws Exception {
+                        return ctx.bank.opened();
+                    }
+                });
             }
         } else {
             if (!ctx.backpack.select().id(Constants.WINE_ID).isEmpty()) {
-                ctx.bank.deposit(Constants.WINE_ID, Bank.Amount.ALL);
+                ctx.bank.depositInventory();
+                ctx.bank.withdraw(Constants.LAW_RUNE_ID, 500);
             }
         }
     }

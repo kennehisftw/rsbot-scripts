@@ -18,7 +18,7 @@ public class Interaction extends Accessor {
         super(ctx);
     }
 
-    public <E extends Interactive & Locatable & Nameable> Interaction object(E obj, String action) {
+    public <E extends Interactive & Locatable & Nameable> void object(E obj, String action, Callable<Boolean> condition) {
         if(!obj.inViewport()) {
             final LocalPath path = ctx.movement.findPath(obj);
             ctx.status.set("Turning camera towards " + obj.name());
@@ -37,29 +37,18 @@ public class Interaction extends Accessor {
         } else {
             ctx.status.set("Attempting to " + action + " " + obj.name());
             if(obj.interact(action, obj.name())) {
-                Condition.wait(new Callable<Boolean>() {
-                    @Override
-                    public Boolean call() throws Exception {
-                        return getCondition();
-                    }
-                }, 200, 10);
+                Condition.wait(condition, 200, 10);
             } else {
                 ctx.status.set("Unable to interact, turning camera randomly");
                 ctx.camera.angle(Random.nextInt(90, 180));
             }
         }
-        return this;
     }
 
-    public <E extends Interactive & Nameable> Interaction item(E obj, String action) {
+    public <E extends Interactive & Nameable> Interaction item(E obj, String action, Callable<Boolean> condition) {
         ctx.status.set("Attempting to " + action + " " + obj.name());
         if(obj.interact(action, obj.name())) {
-            Condition.wait(new Callable<Boolean>() {
-                @Override
-                public Boolean call() throws Exception {
-                    return getCondition();
-                }
-            }, 200, 10);
+            Condition.wait(condition, 200, 10);
         } else {
             ctx.status.set("Unable to interact, attempting to open backpack");
             ctx.hud.open(Hud.Window.BACKPACK);
@@ -67,13 +56,4 @@ public class Interaction extends Accessor {
         return this;
     }
 
-    private boolean getCondition() {
-        return condition;
-    }
-
-    private boolean condition = false;
-
-    public void waitFor(boolean condition) {
-        this.condition = condition;
-    }
 }
