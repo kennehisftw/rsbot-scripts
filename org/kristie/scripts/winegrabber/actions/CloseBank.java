@@ -17,8 +17,8 @@ public class CloseBank extends Action {
     public boolean activate() {
         return ctx.backpack.select().count() != 28
                 && ctx.bank.opened()
-                && !ctx.backpack.select().id(Constants.WINE_ID).isEmpty()
-                && ctx.backpack.select().id(Constants.LAW_RUNE_ID).isEmpty();
+                && ctx.backpack.select().id(Constants.WINE_ID).isEmpty()
+                && !ctx.backpack.select().id(Constants.LAW_RUNE_ID).isEmpty();
     }
 
     @Override
@@ -32,6 +32,11 @@ public class CloseBank extends Action {
                 }
             }, 200, 5);
         }
+    }
+
+    @Override
+    public int priority() {
+        return 1;
     }
 
 }

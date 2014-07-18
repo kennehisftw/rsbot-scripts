@@ -32,7 +32,7 @@ public abstract class ActionScript<S extends ActionScript, C extends Context> ex
 
     @Override
     public int compare(Action o1, Action o2) {
-        return o1.priority() - o2.priority();
+        return o2.priority() - o1.priority();
     }
 
     public abstract void start();

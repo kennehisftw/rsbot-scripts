@@ -15,7 +15,8 @@ public class WalkToBank extends Action {
     public boolean activate() {
         return ctx.backpack.select().size() == 28
                 && !ctx.bank.opened()
-                && Constants.BANK_TILE.distanceTo(ctx.players.local()) < 50;
+                && Constants.BANK_TILE.distanceTo(ctx.players.local()) < 50
+                && Constants.BANK_TILE.distanceTo(ctx.players.local()) > 5;
     }
 
     @Override
