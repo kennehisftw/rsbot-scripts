@@ -17,7 +17,12 @@ public class TakeWine extends Action {
     public boolean activate() {
         return ctx.backpack.select().count() != 28
                 && !ctx.backpack.select().id(Constants.LAW_RUNE_ID).isEmpty()
-                && Constants.WINE_STANDING_TILE.distanceTo(ctx.players.local()) == 0;
+                && sameTile(Constants.WINE_STANDING_TILE);
+    }
+
+    private boolean sameTile(Tile check) {
+        final Tile local = ctx.players.local().tile();
+        return check.x() == local.x() && check.y() == local.y() && check.floor() == local.floor();
     }
 
     @Override
