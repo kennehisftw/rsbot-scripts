@@ -1,7 +1,7 @@
-package org.kristie.methods;
+package org.kenneh.methods;
 
-import org.kristie.core.context.Accessor;
-import org.kristie.core.context.Context;
+import org.kenneh.core.context.Accessor;
+import org.kenneh.core.context.Context;
 import org.powerbot.script.Condition;
 import org.powerbot.script.Locatable;
 import org.powerbot.script.Nameable;
@@ -12,7 +12,7 @@ import org.powerbot.script.rt6.LocalPath;
 
 import java.util.concurrent.Callable;
 
-public class Interaction extends Accessor {
+public class Interaction extends Accessor<Context> {
 
     public Interaction(Context ctx) {
         super(ctx);

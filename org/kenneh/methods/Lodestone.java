@@ -1,11 +1,12 @@
-package org.kristie.methods;
+package org.kenneh.methods;
 
-import org.kristie.core.context.Accessor;
-import org.kristie.core.context.Context;
-import org.kristie.util.Timer;
+import org.kenneh.core.context.Accessor;
+import org.kenneh.core.context.Context;
+import org.kenneh.util.Timer;
 import org.powerbot.script.Condition;
 import org.powerbot.script.Random;
 import org.powerbot.script.Tile;
+import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.Component;
 import org.powerbot.script.rt6.TileMatrix;
 import org.powerbot.script.rt6.Widgets;
@@ -13,7 +14,7 @@ import org.powerbot.script.rt6.Widgets;
 import java.awt.*;
 import java.util.concurrent.Callable;
 
-public class Lodestone extends Accessor {
+public class Lodestone extends Accessor<ClientContext> {
 
     private final Widgets widgets = ctx.widgets;
     private final Component TELEPORT_INTERFACE = widgets.component(1092, 0);

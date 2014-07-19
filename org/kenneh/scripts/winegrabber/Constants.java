@@ -1,4 +1,4 @@
-package org.kristie.scripts.winegrabber;
+package org.kenneh.scripts.winegrabber;
 
 import org.powerbot.script.Tile;
 

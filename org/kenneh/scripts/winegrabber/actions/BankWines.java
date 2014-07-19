@@ -1,11 +1,9 @@
-package org.kristie.scripts.winegrabber.actions;
+package org.kenneh.scripts.winegrabber.actions;
 
-import org.kristie.core.Action;
-import org.kristie.core.context.Context;
-import org.kristie.scripts.winegrabber.Constants;
-import org.powerbot.script.rt6.Bank;
+import org.kenneh.core.Action;
+import org.kenneh.core.context.Context;
+import org.kenneh.scripts.winegrabber.Constants;
 import org.powerbot.script.rt6.GameObject;
-import org.powerbot.script.rt6.Item;
 
 import java.util.concurrent.Callable;
 
@@ -34,8 +32,7 @@ public class BankWines extends Action {
             }
         } else {
             if (!ctx.backpack.select().id(Constants.WINE_ID).isEmpty()) {
-                ctx.bank.depositInventory();
-                ctx.bank.withdraw(Constants.LAW_RUNE_ID, 500);
+                ctx.bank.deposit(Constants.WINE_ID, 28);
             }
         }
     }

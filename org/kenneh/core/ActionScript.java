@@ -1,20 +1,19 @@
-package org.kristie.core;
+package org.kenneh.core;
 
-import org.kristie.core.context.Context;
+import org.powerbot.script.ClientContext;
 import org.powerbot.script.PollingScript;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
-public abstract class ActionScript<S extends ActionScript, C extends Context> extends PollingScript<C> implements Comparator<Action> {
+public abstract class ActionScript<C extends ClientContext> extends PollingScript<C> implements Comparator<Action> {
 
     private final List<Action> actionList;
 
     public ActionScript() {
         actionList = new LinkedList<>();
-    }
-
-    public S script() {
-        return(S) this;
     }
 
     public void add(Action... actions) {

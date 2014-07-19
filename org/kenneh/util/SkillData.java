@@ -1,9 +1,10 @@
-package org.kristie.util;
+package org.kenneh.util;
 
-import org.kristie.core.context.Accessor;
-import org.kristie.core.context.Context;
+import org.kenneh.core.context.Accessor;
+import org.kenneh.core.context.Context;
+import org.powerbot.script.rt6.ClientContext;
 
-public final class SkillData extends Accessor {
+public final class SkillData extends Accessor<ClientContext> {
 
     public static final int NUM_SKILL = 26;
     public final int[] initialExp = new int[NUM_SKILL];

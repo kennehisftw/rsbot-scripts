@@ -1,9 +1,9 @@
-package org.kristie.core;
+package org.kenneh.core;
 
-import org.kristie.core.context.Accessor;
-import org.kristie.core.context.Context;
+import org.kenneh.core.context.Accessor;
+import org.kenneh.core.context.Context;
 
-public abstract class Action extends Accessor {
+public abstract class Action extends Accessor<Context> {
 
     public Action(Context context) {
         super(context);

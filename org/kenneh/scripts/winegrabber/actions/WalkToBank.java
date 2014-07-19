@@ -1,8 +1,8 @@
-package org.kristie.scripts.winegrabber.actions;
+package org.kenneh.scripts.winegrabber.actions;
 
-import org.kristie.core.Action;
-import org.kristie.core.context.Context;
-import org.kristie.scripts.winegrabber.Constants;
+import org.kenneh.core.Action;
+import org.kenneh.core.context.Context;
+import org.kenneh.scripts.winegrabber.Constants;
 import org.powerbot.script.rt6.LocalPath;
 
 public class WalkToBank extends Action {

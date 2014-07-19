@@ -1,9 +1,9 @@
-package org.kristie.scripts.winegrabber;
+package org.kenneh.scripts.winegrabber;
 
-import org.kristie.core.ActionScript;
-import org.kristie.core.context.Context;
-import org.kristie.scripts.winegrabber.actions.*;
-import org.kristie.util.Calculations;
+import org.kenneh.core.ActionScript;
+import org.kenneh.core.context.Context;
+import org.kenneh.scripts.winegrabber.actions.*;
+import org.kenneh.util.Calculations;
 import org.powerbot.script.MessageEvent;
 import org.powerbot.script.MessageListener;
 import org.powerbot.script.PaintListener;
@@ -13,7 +13,7 @@ import org.powerbot.script.rt6.GeItem;
 import java.awt.*;
 
 @Script.Manifest(name = "Wine Grabber", description = "Steals Wine of Zamorak from the temple north of Falador")
-public class WineGrabber extends ActionScript<WineGrabber, Context> implements PaintListener, MessageListener {
+public class WineGrabber extends ActionScript<Context> implements PaintListener, MessageListener {
 
     private int lawStart = 0;
     private int missed = 0;
