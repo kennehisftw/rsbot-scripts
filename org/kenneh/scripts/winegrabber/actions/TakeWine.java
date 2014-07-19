@@ -17,12 +17,7 @@ public class TakeWine extends Action {
     public boolean activate() {
         return ctx.backpack.select().count() != 28
                 && !ctx.backpack.select().id(Constants.LAW_RUNE_ID).isEmpty()
-                && sameTile(Constants.WINE_STANDING_TILE);
-    }
-
-    private boolean sameTile(Tile check) {
-        final Tile local = ctx.players.local().tile();
-        return check.x() == local.x() && check.y() == local.y() && check.floor() == local.floor();
+                && ctx.players.local().tile().equals(Constants.WINE_STANDING_TILE);
     }
 
     @Override
@@ -30,7 +25,7 @@ public class TakeWine extends Action {
 
         if(!ctx.client().isSpellSelected()) {
             ctx.status.set("Selecting ability");
-            ctx.combatBar.actionAt(0).select();
+            ctx.combatBar.select().id(518).poll().select();
         }
 
         final GroundItem wine = ctx.groundItems.select().id(Constants.WINE_ID).nearest().poll();

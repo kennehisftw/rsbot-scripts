@@ -18,21 +18,20 @@ public class BankWines extends Action {
 
     @Override
     public boolean activate() {
-        return ctx.backpack.select().size() == 28 && Constants.BANK_TILE.distanceTo(ctx.players.local()) < 10;
+        return ctx.backpack.select().size() == 28 && Constants.BANK_TILE.matrix(ctx).inViewport();
     }
 
     @Override
     public void execute() {
         if(!ctx.bank.opened()) {
-            final GameObject banker = ctx.objects.select().name("Bank booth").nearest().poll();
-            if (banker.valid()) {
-                ctx.interaction.object(banker, "Bank", new Callable<Boolean>() {
-                    @Override
-                    public Boolean call() throws Exception {
-                        return ctx.bank.opened();
-                    }
-                });
-            }
+           if(ctx.bank.open()) {
+               Condition.wait(new Callable<Boolean>() {
+                   @Override
+                   public Boolean call() throws Exception {
+                       return ctx.bank.opened();
+                   }
+               });
+           }
         } else {
             if (!ctx.backpack.select().id(Constants.WINE_ID).isEmpty()) {
                 Component comp = ((WineGrabber) ctx.controller.script()).getInventoryWidget(Constants.WINE_ID);

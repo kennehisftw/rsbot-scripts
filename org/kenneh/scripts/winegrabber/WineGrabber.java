@@ -22,6 +22,9 @@ public class WineGrabber extends ActionScript<Context> implements PaintListener,
     private int winePrice = 0;
 
     public void start() {
+
+        log.info("Telegrab ID: "+ ctx.combatBar.actionAt(0).id());
+
         winePrice = GeItem.price(Constants.WINE_ID);
         lawStart = getInventoryCount(Constants.LAW_RUNE_ID);
 
