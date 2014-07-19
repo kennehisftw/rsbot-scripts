@@ -8,9 +8,11 @@ import org.powerbot.script.MessageEvent;
 import org.powerbot.script.MessageListener;
 import org.powerbot.script.PaintListener;
 import org.powerbot.script.Script;
+import org.powerbot.script.rt6.Component;
 import org.powerbot.script.rt6.GeItem;
 
 import java.awt.*;
+
 
 @Script.Manifest(name = "Wine Grabber", description = "Steals Wine of Zamorak from the temple north of Falador")
 public class WineGrabber extends ActionScript<Context> implements PaintListener, MessageListener {
@@ -46,6 +48,18 @@ public class WineGrabber extends ActionScript<Context> implements PaintListener,
 
         final int profit = getWinesGrabbed() * winePrice;
         g.drawString("Profit: "+ Calculations.perHour(profit) + "/hr (+" + Calculations.formatNumber(profit) + ")", 10, 311);
+    }
+
+    public Component getInventoryWidget(int itemId) {
+        final Component parent = ctx.widgets.component(762, 7);
+        if(parent.valid() && parent.visible()) {
+            for(Component item : parent.components()) {
+                if(item.itemId() == itemId) {
+                    return item;
+                }
+            }
+        }
+        return null;
     }
 
     public int getInventoryCount(int itemId) {
