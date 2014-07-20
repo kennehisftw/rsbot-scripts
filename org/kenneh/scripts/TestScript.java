@@ -1,10 +1,10 @@
 package org.kenneh.scripts;
 
-import org.kenneh.core.Action;
-import org.kenneh.core.ActionScript;
-import org.kenneh.core.context.Context;
 import org.powerbot.script.PaintListener;
+import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
+import org.powerbot.script.rt6.ClientContext;
+import org.powerbot.script.rt6.GameObject;
 
 import java.awt.*;
 
@@ -15,26 +15,22 @@ import java.awt.*;
         name = "Test Script",
         description = "Used for debugging various things"
 )
-public class TestScript extends ActionScript<Context> implements PaintListener {
+public class TestScript extends PollingScript<ClientContext> implements PaintListener {
 
+    @Override
+    public void poll() {
+
+    }
 
     @Override
     public void start() {
-        add(new Action(ctx) {
-            @Override
-            public boolean activate() {
-                return true;
-            }
 
-            @Override
-            public void execute() {
-                log.info("Items: " + ctx.backpack.select().count(true));
-            }
-        });
     }
 
     @Override
     public void repaint(Graphics graphics) {
-
+        for(GameObject obj : ctx.objects.select().within(5)) {
+            obj.draw(graphics);
+        }
     }
 }

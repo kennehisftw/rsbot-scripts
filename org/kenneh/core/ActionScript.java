@@ -23,9 +23,11 @@ public abstract class ActionScript<C extends ClientContext> extends PollingScrip
 
     @Override
     public void poll() {
-        for(Action action : actionList) {
-            if(action.activate())
-                action.execute();
+        while (true) {
+            for (Action action : actionList) {
+                if (action.activate())
+                    action.execute();
+            }
         }
     }
 
