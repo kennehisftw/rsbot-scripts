@@ -4,7 +4,6 @@ import org.kenneh.core.ActionScript;
 import org.kenneh.core.context.Context;
 import org.kenneh.util.Calculations;
 import org.kenneh.util.SkillData;
-import org.kenneh.util.Utilities;
 import org.powerbot.script.PaintListener;
 import org.powerbot.script.Script;
 import org.powerbot.script.rt6.Item;
@@ -33,9 +32,12 @@ public class AutoFighter extends ActionScript<Context> implements PaintListener 
     public void start() {
         gui = new FighterGUI(ctx);
         gui.setVisible(true);
+        lastXP = ctx.skills.experience(Skills.CONSTITUTION);
     }
 
+    private int lastXP = 0;
     private int drawY = 30;
+    private int kills = -1;
 
     @Override
     public void repaint(Graphics graphics) {
@@ -45,13 +47,15 @@ public class AutoFighter extends ActionScript<Context> implements PaintListener 
         graphics.fillRect(1, 88, 250, drawY - 92);
         graphics.setColor(Color.WHITE);
 
-        graphics.drawString("Status: " + ctx.status.get(), 5, 100);
+        graphics.drawString("Runtime: "+ Calculations.formatTime(getRuntime()), 5, 100);
+        graphics.drawString("Status: " + ctx.status.get(), 5, 112);
 
         final Item food = ctx.utilities.getFood().poll();
-        graphics.drawString("Food: "+ (food.valid() ? food.name() : "none"), 5, 112);
-        graphics.drawString("Health: "+ ctx.utilities.getHealthPercent(), 5, 124);
+        graphics.drawString("Food: "+ (food.valid() ? food.name() : "none"), 5, 124);
+        graphics.drawString("Health: "+ ctx.utilities.getHealthPercent(), 5, 136);
+        graphics.drawString("Kills: " + Calculations.perHour(kills) + "/hr (+" + Calculations.formatNumber(kills) + ")", 5, 148);
 
-        int y = 145;
+        int y = 175;
         for(int i = 0; i < SkillData.NUM_SKILL; i++) {
             final int experience = ctx.skillTracker.experience(i);
             if(experience > 0) {
@@ -70,6 +74,12 @@ public class AutoFighter extends ActionScript<Context> implements PaintListener 
             }
         }
         drawY = y;
+
+        final int exp = ctx.skills.experience(Skills.CONSTITUTION);
+        if(exp > lastXP) {
+            kills++;
+            lastXP = exp;
+        }
 
     }
 

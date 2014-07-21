@@ -15,8 +15,9 @@ public class Constants {
             "Brawling gloves (Melee)", "Brawling gloves (Magic)", "Brawling gloves (Ranged)", "Brawling gloves (Agility)", "Brawling gloves (Cooking)",
             "Brawling gloves (FM)", "Brawling gloves (Fishing)", "Brawling gloves (Hunter)", "Brawling gloves (Mining)", "Brawling gloves (Prayer)",
             "Brawling gloves (Smithing)", "Brawling gloves (Thieving)", "Brawling gloves (WC)",
-            // THESE ARE CUSTOM DROPS THAT ARENT RDT BUT SHOULD BE LOOTED ANYWAYS
-            "Rune scimitar", "Gold charm", "Green charm", "Crimson charm", "Blue charm", "Grimy dwarf weed", "Grimy lantadyme"
+            // THESE ARE CUSTOM DROPS THAT AREN'T RDT BUT SHOULD BE LOOTED ANYWAYS
+            "Rune scimitar", "Gold charm", "Green charm", "Crimson charm", "Blue charm", "Grimy dwarf weed", "Grimy lantadyme", "Adamant arrow", "Rune arrow",
+            "Fire rune"
     };
 
 }

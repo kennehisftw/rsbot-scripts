@@ -3,7 +3,6 @@ package org.kenneh.scripts.fighter.actions;
 import org.kenneh.core.Action;
 import org.kenneh.core.context.Context;
 import org.kenneh.scripts.fighter.AutoFighter;
-import org.kenneh.util.Utilities;
 import org.powerbot.script.Filter;
 import org.powerbot.script.rt6.GroundItem;
 import org.powerbot.script.rt6.Item;
@@ -45,6 +44,7 @@ public class Loot extends Action {
                     });
                 }
             } else {
+
                 ctx.interaction.object(loot, "Take", new Callable<Boolean>() {
                     @Override
                     public Boolean call() throws Exception {

@@ -2,7 +2,6 @@ package org.kenneh.scripts.fighter.actions;
 
 import org.kenneh.core.Action;
 import org.kenneh.core.context.Context;
-import org.kenneh.util.Utilities;
 import org.powerbot.script.rt6.Item;
 
 import java.util.concurrent.Callable;
