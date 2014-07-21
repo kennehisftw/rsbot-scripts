@@ -16,12 +16,12 @@ public class Teleport extends Action {
 
     @Override
     public boolean activate() {
-        return ctx.utilities.getHealthPercent() < 20 && ctx.utilities.getTeleport().valid();
+        return ctx.utilities.getHealthPercent() < 20 && !ctx.utilities.getTeleport().isEmpty();
     }
 
     @Override
     public void execute() {
-        final Item teleport = ctx.utilities.getTeleport();
+        final Item teleport = ctx.utilities.getTeleport().poll();
         ctx.interaction.item(teleport, "Break", new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {

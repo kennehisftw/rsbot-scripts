@@ -19,12 +19,12 @@ public class Eat extends Action {
     @Override
     public boolean activate() {
         return ctx.utilities.getHealthPercent() <= 40
-                && ctx.utilities.getFood().valid();
+                && !ctx.utilities.getFood().isEmpty();
     }
 
     @Override
     public void execute() {
-        final Item food = ctx.utilities.getFood();
+        final Item food = ctx.utilities.getFood().poll();
         ctx.interaction.item(food, "Eat", new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {

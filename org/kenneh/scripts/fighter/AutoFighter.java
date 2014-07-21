@@ -47,7 +47,7 @@ public class AutoFighter extends ActionScript<Context> implements PaintListener 
 
         graphics.drawString("Status: " + ctx.status.get(), 5, 100);
 
-        final Item food = ctx.utilities.getFood();
+        final Item food = ctx.utilities.getFood().poll();
         graphics.drawString("Food: "+ (food.valid() ? food.name() : "none"), 5, 112);
         graphics.drawString("Health: "+ ctx.utilities.getHealthPercent(), 5, 124);
 

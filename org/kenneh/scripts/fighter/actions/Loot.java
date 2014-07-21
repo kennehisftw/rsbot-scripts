@@ -35,7 +35,7 @@ public class Loot extends Action {
         if(loot.valid()) {
             if(ctx.backpack.select().count() == 28) {
                 ctx.status.set("Eating food for loot room");
-                final Item food = ctx.utilities.getFood();
+                final Item food = ctx.utilities.getFood().poll();
                 if(food.valid()) {
                     ctx.interaction.item(food, "Eat", new Callable<Boolean>() {
                         @Override

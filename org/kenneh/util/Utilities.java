@@ -4,6 +4,7 @@ import org.kenneh.core.context.Accessor;
 import org.kenneh.core.context.Context;
 import org.powerbot.script.Filter;
 import org.powerbot.script.rt6.Item;
+import org.powerbot.script.rt6.ItemQuery;
 
 import java.util.Arrays;
 
@@ -16,17 +17,17 @@ public class Utilities extends Accessor<Context> {
         super(context);
     }
 
-    public Item getFood() {
-        return ctx.backpack.select().name("Shrimp", "Trout", "Salmon", "Tuna", "Lobster", "Swordfish", "Monkfish", "Shark", "Cavefish", "Rocktail").poll();
+    public ItemQuery<Item> getFood() {
+        return ctx.backpack.select().name("Shrimp", "Trout", "Salmon", "Tuna", "Lobster", "Swordfish", "Monkfish", "Shark", "Cavefish", "Rocktail");
     }
 
-    public Item getTeleport() {
+    public ItemQuery<Item> getTeleport() {
         return ctx.backpack.select().select(new Filter<Item>() {
             @Override
             public boolean accept(Item item) {
                 return item.name().toLowerCase().contains("teleport");
             }
-        }).poll();
+        });
     }
 
     public int getHealthPercent() { // 1430, 4, 7
