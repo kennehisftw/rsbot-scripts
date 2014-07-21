@@ -8,14 +8,9 @@ import org.powerbot.script.MessageEvent;
 import org.powerbot.script.MessageListener;
 import org.powerbot.script.PaintListener;
 import org.powerbot.script.Script;
-import org.powerbot.script.rt6.Component;
 import org.powerbot.script.rt6.GeItem;
-import org.powerbot.script.rt6.Item;
-import org.powerbot.script.rt6.ItemQuery;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 
 @Script.Manifest(name = "Wine Grabber", description = "Steals Wine of Zamorak from the temple north of Falador")

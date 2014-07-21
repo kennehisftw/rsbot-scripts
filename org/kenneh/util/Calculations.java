@@ -1,11 +1,23 @@
 package org.kenneh.util;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 public class Calculations {
 
     private static final long start = System.currentTimeMillis();
     private static final DecimalFormat format = new DecimalFormat("###,###,###,###");
+
+    public static int[] toArray(List<Integer> list) {
+        final int[] array = new int[list.size()];
+        int count = 0;
+        for(int i : list) {
+            array[count] = i;
+            count++;
+        }
+        return array;
+    }
+
 
     public static String capitalize(final String string) {
         return String.valueOf(string.charAt(0)).toUpperCase() + string.substring(1).toLowerCase();

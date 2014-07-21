@@ -1,6 +1,7 @@
 package org.kenneh.core;
 
 import org.powerbot.script.ClientContext;
+import org.powerbot.script.Condition;
 import org.powerbot.script.PollingScript;
 
 import java.util.Collections;
@@ -23,12 +24,13 @@ public abstract class ActionScript<C extends ClientContext> extends PollingScrip
 
     @Override
     public void poll() {
-        while (true) {
-            for (Action action : actionList) {
-                if (action.activate())
-                    action.execute();
+        for (Action action : actionList) {
+            if (action.activate()) {
+                action.execute();
+                break;
             }
         }
+        Condition.sleep(300);
     }
 
     @Override
